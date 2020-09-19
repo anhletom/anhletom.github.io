@@ -15,7 +15,8 @@ document.querySelectorAll('#hot .item').forEach(function(item){
     var navLinkEl = document.createElement('a')
     navLinkEl.classList = 'nav-link';
     navLinkEl.innerText = 'Newsletter';
-    newsletterEl.appendChild(navLinkEl)
+    navLinkEl.style.cursor = 'pointer';
+    newsletterEl.appendChild(navLinkEl);
     document.querySelectorAll('#navigation .navbar-nav.mr-auto')[0].appendChild(newsletterEl);
 
     

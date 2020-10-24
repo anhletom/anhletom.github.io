@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        html * {
+            margin: 5px;
+        }
+        #title {
+            background-color: black;
+            text-align: center;
+            width: 100%;
+            height: 50px;
+            color: white;
+            vertical-align: middle;
+        }
+
+        #box1{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        }
+        #box2{
+            background-color: yellow;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="title">
+        <h1>jQwuery Animation lecture</h1>
+    </div>
+
+    <button id="FadeIn">Fade In </button>
+    <button id="FadeOut">Fade Out</button>
+    <button id="FadeToggle">Fade Toggle</button>
+    <button id="stop">Stop animation</button>
+    <button id="slideDown">Slide Down</button>
+    <button id="slideUp">Slide Up</button>  
+    <button id="animate">Animate</button>
+
+    <div id="box1"></div>
+    <div id="box2"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        //on('', param2) first param is an event to listen to and second param is a fuction
+        function completeAnimation(){
+            alert('Done!');
+        }
+        $('#FadeIn').on('click',function(){
+            $('#box1').fadeIn(5000,completeAnimation);
+        })
+        $('#FadeOut').on('click',function(){
+            $('#box1').fadeOut({
+                duration: 2000,
+                easing: 'linear'
+            });
+        })
+        $('#FadeToggle').on('click',function(){
+            $('#box1').fadeToggle();
+        })
+        $('#stop').on('click',function(){
+            $('#box1').stop();
+        })
+        $('#slideDown').on('click',function(){
+            $('#box1').slideDown(5000);
+        })
+        $('#slideUp').on('click',function(){
+            $('#box1').slideUp(5000);
+        })
+        $('#animate').on('click', function(){
+            $('#box1').animate({
+                marginLeft: '500px'
+            },
+            4000,
+            'swing'
+            );
+            /*$('#box2').animate({
+                marginLeft: '500px'
+            },
+            2000,
+            'linear');
+            $('#box2').animate({
+                marginTop: '200px'
+            },
+            2000,
+            'linear');
+            $('#box2').animate({
+                marginLeft: '5px'
+            },
+            2000,
+            'linear');
+            $('#box2').animate({
+                marginTop: '0px'
+            },
+            2000,
+            'linear');*/
+            $('#box2').animate({marginLeft: '500px'},2000,'linear').delay(5000).animate({marginTop: '500px'},2000,'linear').delay(5000).animate({marginLeft: '5px'},2000,'linear').delay(5000).animate({marginTop: '0px'},2000,'linear');
+        })
+    </script>
+</body>
+</html>

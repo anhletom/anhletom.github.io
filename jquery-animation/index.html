@@ -12,9 +12,19 @@
             background-color: black;
             text-align: center;
             width: 100%;
-            height: 50px;
+            height: 200px;
             color: white;
             vertical-align: middle;
+        }
+
+        #title h1 {
+            height: 100%;
+            vertical-align: middle;
+            font-family: 'Impact';
+        }
+
+        #title h1 .skill{
+            color: yellow;
         }
 
         #box1{
@@ -30,8 +40,8 @@
     </style>
 </head>
 <body>
-    <div id="title">
-        <h1>jQwuery Animation lecture</h1>
+    <div id="title"> 
+        <h1>I am <span class="skill">friendly</span></h1>
     </div>
 
     <button id="FadeIn">Fade In </button>
@@ -46,7 +56,41 @@
     <div id="box2"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script>
+        var skillSet = ['friendly', 'hard-working', 'funny'] //array
+        var counter = 0;
+
+        function myFunction() {
+            var nextIndex = counter % skillSet.length; //remainder the devision will decide next skill to displayed
+            var skill = skillSet[nextIndex]; //accessing the element with indexing of counter within the array
+
+            $('#title h1 .skill').text(skill);
+            $('#title h1 .skill').fadeTo(800, 1);
+            $('#title h1 .skill').fadeTo(800, 0.01);
+                counter = counter +1;
+                
+        }
+        /*function myFunction() {
+            var skill = skillSet[counter]; //accessing the element with indexing of counter with the array
+            $('#title h1 .skill').text(skill);
+            $('#title h1 .skill').fadeTo(800, 1);
+            $('#title h1 .skill').fadeTo(800, 0.01);
+            if (counter === 2) //or (counter === skillSet.length -1) {
+                counter = 0;
+            } else {
+                counter = counter +1;
+            }
+        }*/
+
+        //myFunction();
+        //execute instantly
+
+        setInterval(myFunction, 500) // run myFunction() every 500ms
+
+        //setTimeout(myFunction, 5000)
+        // delay running myFunction() for 5000ms
+   
         //on('', param2) first param is an event to listen to and second param is a fuction
         function completeAnimation(){
             alert('Done!');
